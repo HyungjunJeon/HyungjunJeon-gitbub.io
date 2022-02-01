@@ -1,14 +1,9 @@
 import { Link } from 'gatsby'
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
+import { PostFrontmatterType } from 'types/PostItem.types'
 
-type PostItemProps = {
-  title: string
-  date: string
-  category: string
-  summary: string
-  link: string
-}
+type PostItemProps = PostFrontmatterType & { link: string }
 
 const PostItemWrapper = styled(Link)`
   border-radius: 10px;
