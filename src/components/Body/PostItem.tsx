@@ -63,7 +63,7 @@ const Category = styled.span`
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
   date,
-  category,
+  categories,
   summary,
   link,
 }) {
@@ -73,7 +73,7 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
         <Title>{title}</Title>
         <Summary>{summary}</Summary>
         <DateAndCategory>
-          <Category>{category}</Category>
+          <Category>{categories}</Category>
           <Date>{date}</Date>
         </DateAndCategory>
       </PostItemContent>

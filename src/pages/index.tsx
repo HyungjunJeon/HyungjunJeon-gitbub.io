@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import Header from 'components/Common/Header'
 import Footer from '../components/Common/Footer'
-import CategoryList from 'components/Common/CategoryList'
+import CategoryList, { CategoryListProps } from 'components/Common/CategoryList'
 import PostList from 'components/Body/PostList'
 import { graphql } from 'gatsby'
 import { PostListItemType } from 'types/PostItem.types'
@@ -20,11 +20,11 @@ type IndexPageProps = {
   }
 }
 
-const CATEGORY_LIST = {
-  All: 5,
-  Web: 3,
-  Mobile: 2,
-}
+// const CATEGORY_LIST = {
+//   All: 5,
+//   Web: 3,
+//   Mobile: 2,
+// }
 
 const Container = styled.div`
   display: flex;
@@ -48,6 +48,32 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     typeof parsed.category !== 'string' || !parsed.category
       ? 'All'
       : parsed.category
+
+  const categoryList = useMemo(
+    () =>
+      edges.reduce(
+        (
+          list: CategoryListProps['categoryList'],
+          {
+            node: {
+              frontmatter: { categories },
+            },
+          }: PostListItemType,
+        ) => {
+          categories.forEach(category => {
+            if (list[category] === undefined) list[category] = 1
+            else list[category]++
+          })
+
+          list['All']++
+
+          return list
+        },
+        { All: 0 },
+      ),
+    [],
+  )
+
   return (
     <Container>
       <GlobalStyle />
@@ -55,7 +81,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       <BodyWrapper>
         <CategoryList
           selectedCategory={selectedCategory}
-          categoryList={CATEGORY_LIST}
+          categoryList={categoryList}
         />
         <PostList posts={edges} />
       </BodyWrapper>
@@ -78,7 +104,7 @@ export const getPostList = graphql`
             title
             summary
             date(formatString: "YYYY. MM. DD")
-            category
+            categories
           }
         }
       }

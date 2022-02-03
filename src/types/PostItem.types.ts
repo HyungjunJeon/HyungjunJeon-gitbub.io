@@ -1,7 +1,7 @@
 export type PostFrontmatterType = {
   title: string
   date: string
-  category: string
+  categories: string[]
   summary: string
 }
 
