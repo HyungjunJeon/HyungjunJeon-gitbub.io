@@ -1,13 +1,10 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import styled from '@emotion/styled'
-import GlobalStyle from 'components/Common/GlobalStyle'
-import Header from 'components/Common/Header'
-import Footer from '../components/Common/Footer'
 import CategoryList, { CategoryListProps } from 'components/Common/CategoryList'
 import PostList from 'components/Body/PostList'
 import { graphql } from 'gatsby'
 import { PostListItemType } from 'types/PostItem.types'
 import queryString, { ParsedQuery } from 'query-string'
+import Template from 'components/Common/Template'
 
 type IndexPageProps = {
   location: {
@@ -19,23 +16,6 @@ type IndexPageProps = {
     }
   }
 }
-
-// const CATEGORY_LIST = {
-//   All: 5,
-//   Web: 3,
-//   Mobile: 2,
-// }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`
-
-const BodyWrapper = styled.div`
-  display: flex;
-  height: 100%;
-`
 
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
@@ -75,18 +55,13 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   )
 
   return (
-    <Container>
-      <GlobalStyle />
-      <Header />
-      <BodyWrapper>
-        <CategoryList
-          selectedCategory={selectedCategory}
-          categoryList={categoryList}
-        />
-        <PostList selectedCategory={selectedCategory} posts={edges} />
-      </BodyWrapper>
-      <Footer />
-    </Container>
+    <Template>
+      <CategoryList
+        selectedCategory={selectedCategory}
+        categoryList={categoryList}
+      />
+      <PostList selectedCategory={selectedCategory} posts={edges} />
+    </Template>
   )
 }
 
@@ -106,7 +81,7 @@ export const getPostList = graphql`
           frontmatter {
             title
             summary
-            date(formatString: "YYYY. MM. DD")
+            date(formatString: "YYYY. MM. DD.")
             categories
           }
         }
