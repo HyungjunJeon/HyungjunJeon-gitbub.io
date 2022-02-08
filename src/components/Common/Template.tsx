@@ -14,17 +14,12 @@ const Container = styled.div`
   height: 100vh;
 `
 
-const BodyWrapper = styled.div`
-  display: flex;
-  height: 100%;
-`
-
 const Template: FunctionComponent<TemplateProps> = function ({ children }) {
   return (
     <Container>
       <GlobalStyle />
       <Header />
-      <BodyWrapper>{children}</BodyWrapper>
+      {children}
       <Footer />
     </Container>
   )

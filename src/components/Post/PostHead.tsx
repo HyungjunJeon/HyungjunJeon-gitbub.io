@@ -7,7 +7,7 @@ type PostHeadProps = PostHeadInfoProps
 const PostHeadWrapper = styled.div`
   positon: relative;
   width: 100%;
-  height: 400px;
+  height: 100px;
 `
 
 const PostHead: FunctionComponent<PostHeadProps> = function ({

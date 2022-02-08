@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
+import styled from '@emotion/styled'
 import CategoryList, { CategoryListProps } from 'components/Common/CategoryList'
 import PostList from 'components/Body/PostList'
 import { graphql } from 'gatsby'
@@ -16,6 +17,11 @@ type IndexPageProps = {
     }
   }
 }
+
+const IndexPageWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`
 
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
@@ -56,11 +62,13 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 
   return (
     <Template>
-      <CategoryList
-        selectedCategory={selectedCategory}
-        categoryList={categoryList}
-      />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
+      <IndexPageWrapper>
+        <CategoryList
+          selectedCategory={selectedCategory}
+          categoryList={categoryList}
+        />
+        <PostList selectedCategory={selectedCategory} posts={edges} />
+      </IndexPageWrapper>
     </Template>
   )
 }
