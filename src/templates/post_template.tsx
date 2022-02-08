@@ -5,6 +5,7 @@ import { PostPageItemType } from 'types/PostItem.types'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
+import CommentWidget from 'components/Post/CommentWidget'
 
 type PostTemplateProps = {
   data: {
@@ -25,16 +26,14 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   },
 }) {
   const {
-    node: {
-      html,
-      frontmatter: { title, date, categories },
-    },
+    node: { html, frontmatter },
   } = edges[0]
   return (
     <Template>
       <PostPageWrapper>
-        <PostHead title={title} date={date} categories={categories} />
+        <PostHead {...frontmatter} />
         <PostContent html={html} />
+        <CommentWidget />
       </PostPageWrapper>
     </Template>
   )
