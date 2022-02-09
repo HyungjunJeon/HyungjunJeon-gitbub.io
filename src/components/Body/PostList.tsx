@@ -16,6 +16,10 @@ const PostListWrapper = styled.div`
   flex-direction: column;
   padding: 20px;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const PostList: FunctionComponent<PostListProps> = function ({

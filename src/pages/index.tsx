@@ -20,6 +20,7 @@ type IndexPageProps = {
 
 const IndexPageWrapper = styled.div`
   display: flex;
+  justify-content: center;
   height: 100%;
 `
 
@@ -63,11 +64,11 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   return (
     <Template>
       <IndexPageWrapper>
+        <PostList selectedCategory={selectedCategory} posts={edges} />
         <CategoryList
           selectedCategory={selectedCategory}
           categoryList={categoryList}
         />
-        <PostList selectedCategory={selectedCategory} posts={edges} />
       </IndexPageWrapper>
     </Template>
   )

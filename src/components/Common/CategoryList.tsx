@@ -24,18 +24,35 @@ const CategoryListWrapper = styled.div`
   flex-direction: column;
   width: 320px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  margin-top: 20px;
   padding: 20px;
+  border: 1px solid #000000;
+
+  &:: -webkit-scrollbar {
+    display: none;
+  }
 `
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   <Link {...props} />
 ))`
+  display: flex;
+  justify-content: space-between;
   padding: 10px 0;
-  font-size: 20px;
   font-weight: ${({ active }) => (active ? '800' : '400')};
   cursor: pointer;
+`
+
+const CategoryItemWord = styled.p`
+  font-size: 20px;
+
+  &:nth-child(2) {
+    padding: 3px 7px;
+    border-radius: 10px;
+    background-color: #eee;
+  }
 `
 
 const CategoryList: FunctionComponent<CategoryListProps> = function ({
@@ -50,7 +67,8 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({
           active={name === selectedCategory}
           key={name}
         >
-          {name}({count})
+          <CategoryItemWord>{name}</CategoryItemWord>
+          <CategoryItemWord>{count}</CategoryItemWord>
         </CategoryItem>
       ))}
     </CategoryListWrapper>
