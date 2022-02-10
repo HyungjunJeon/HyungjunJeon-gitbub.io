@@ -2,7 +2,10 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import {
+  faArrowUpRightFromSquare,
+  faBars,
+} from '@fortawesome/free-solid-svg-icons'
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -11,11 +14,19 @@ const HeaderWrapper = styled.div`
   padding: 0 50px;
   line-height: 3;
   border-bottom: 1px solid #eaecef;
+
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `
 const HeaderNavWrapper = styled.div`
   width: 180px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 const HeaderLink = styled(Link)`
   font-weight: 600;
@@ -28,6 +39,16 @@ const ExternalLinkIcon = styled.div`
   height: 15px;
   color: #aaa;
   margin-left: 10px;
+`
+const MobileMenuButton = styled.button`
+  display: none;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
 `
 
 const Header: FunctionComponent = function () {
@@ -46,6 +67,9 @@ const Header: FunctionComponent = function () {
           </ExternalLinkIcon>
         </HeaderLink>
       </HeaderNavWrapper>
+      <MobileMenuButton>
+        <FontAwesomeIcon icon={faBars} />
+      </MobileMenuButton>
     </HeaderWrapper>
   )
 }

@@ -13,6 +13,10 @@ const FooterWrapper = styled.div`
 
 const FooterText = styled.p`
   font-size: 15px;
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `
 
 const Footer: FunctionComponent = function () {
