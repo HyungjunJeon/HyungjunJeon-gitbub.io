@@ -27,7 +27,6 @@ const CategoryListWrapper = styled.div`
   overflow-y: auto;
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #000000;
 
   &:: -webkit-scrollbar {
     display: none;
