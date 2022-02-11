@@ -25,7 +25,13 @@ const HeaderNavWrapper = styled.div`
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    display: none;
+    position: absolute;
+    top: 49px;
+    right: 0;
+    width: 100%;
+    padding: 0 calc((100% - 300px) / 2);
+    background: #ffffff;
+    z-index: 99;
   }
 `
 const HeaderLink = styled(Link)`

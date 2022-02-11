@@ -31,6 +31,12 @@ const CategoryListWrapper = styled.div`
   &:: -webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+    background: #ffffff;
+  }
 `
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
