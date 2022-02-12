@@ -13,6 +13,11 @@ const PostHeadInfoWrapper = styled.div`
   width: 768px;
   margin: 0 auto;
   padding: 60px 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 40px 20px;
+  }
 `
 const Title = styled.div`
   display: -webkit-box;
@@ -25,6 +30,10 @@ const Title = styled.div`
   -webkit-box-orient: vertical;
   font-size: 45px;
   font-weight: 800;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `
 
 const PostData = styled.div`
@@ -34,6 +43,11 @@ const PostData = styled.div`
   margin-top: 10px;
   font-size: 18px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    font-weight: 400;
+  }
 `
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({

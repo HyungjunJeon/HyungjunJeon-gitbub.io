@@ -27,7 +27,7 @@ const HeaderNavWrapper = styled.div`
   @media (max-width: 768px) {
     position: absolute;
     top: 49px;
-    right: 0;
+    right: -100%;
     width: 100%;
     padding: 0 calc((100% - 300px) / 2);
     background: #ffffff;
