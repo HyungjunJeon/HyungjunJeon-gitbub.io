@@ -14,12 +14,20 @@ const NotFoundPageWrapper = styled.div`
 const NotFoundText = styled.p`
   font-size: 150px;
   font-weight: 800;
+
+  @media (max-width: 768px) {
+    font-size: 100px;
+  }
 `
 
 const NotFoundDescription = styled.p`
   font-size: 25px;
   text-align: center;
   line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `
 const GoToMainButton = styled(Link)`
   margin-top: 30px;
