@@ -6,6 +6,8 @@ import Footer from 'components/Common/Footer'
 
 type TemplateProps = {
   children: ReactNode
+  toggleMenu: () => void
+  isOpen: boolean
 }
 
 const Container = styled.div`
@@ -14,11 +16,15 @@ const Container = styled.div`
   height: 100vh;
 `
 
-const Template: FunctionComponent<TemplateProps> = function ({ children }) {
+const Template: FunctionComponent<TemplateProps> = function ({
+  children,
+  toggleMenu,
+  isOpen,
+}) {
   return (
     <Container>
       <GlobalStyle />
-      <Header />
+      <Header toggleMenu={toggleMenu} isOpen={isOpen} />
       {children}
       <Footer />
     </Container>

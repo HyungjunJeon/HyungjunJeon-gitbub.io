@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { PostPageItemType } from 'types/PostItem.types'
@@ -28,8 +28,14 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const {
     node: { html, frontmatter },
   } = edges[0]
+
+  const [isOpen, setMenu] = useState<boolean>(false)
+  const toggleMenu = () => {
+    setMenu(!isOpen)
+  }
+
   return (
-    <Template>
+    <Template toggleMenu={toggleMenu} isOpen={isOpen}>
       <PostPageWrapper>
         <PostHead {...frontmatter} />
         <PostContent html={html} />

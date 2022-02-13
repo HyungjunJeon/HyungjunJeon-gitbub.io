@@ -17,9 +17,10 @@ export type CategoryListProps = {
   categoryList: {
     [key: string]: number
   }
+  isOpen: boolean
 }
 
-const CategoryListWrapper = styled.div`
+const CategoryListWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -27,6 +28,7 @@ const CategoryListWrapper = styled.div`
   overflow-y: auto;
   margin-top: 20px;
   padding: 20px;
+  transition: all ease-in 0.3s;
 
   &:: -webkit-scrollbar {
     display: none;
@@ -34,6 +36,7 @@ const CategoryListWrapper = styled.div`
 
   @media (max-width: 768px) {
     position: absolute;
+    right: ${({ isOpen }) => (isOpen ? '0%' : '-100%')};
     width: 100%;
     background: #ffffff;
   }
@@ -63,9 +66,10 @@ const CategoryItemWord = styled.p`
 const CategoryList: FunctionComponent<CategoryListProps> = function ({
   selectedCategory,
   categoryList,
+  isOpen,
 }) {
   return (
-    <CategoryListWrapper>
+    <CategoryListWrapper isOpen={isOpen}>
       {Object.entries(categoryList).map(([name, count]) => (
         <CategoryItem
           to={`/?category=${name}`}

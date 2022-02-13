@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import styled from '@emotion/styled'
 import CategoryList, { CategoryListProps } from 'components/Common/CategoryList'
 import PostList from 'components/Body/PostList'
@@ -61,13 +61,19 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
     [],
   )
 
+  const [isOpen, setMenu] = useState<boolean>(false)
+  const toggleMenu = () => {
+    setMenu(!isOpen)
+  }
+
   return (
-    <Template>
+    <Template toggleMenu={toggleMenu} isOpen={isOpen}>
       <IndexPageWrapper>
         <PostList selectedCategory={selectedCategory} posts={edges} />
         <CategoryList
           selectedCategory={selectedCategory}
           categoryList={categoryList}
+          isOpen={isOpen}
         />
       </IndexPageWrapper>
     </Template>

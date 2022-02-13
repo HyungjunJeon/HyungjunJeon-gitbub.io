@@ -7,6 +7,11 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons'
 
+type HeaderProps = {
+  toggleMenu: () => void
+  isOpen: boolean
+}
+
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -19,15 +24,16 @@ const HeaderWrapper = styled.div`
     padding: 0 25px;
   }
 `
-const HeaderNavWrapper = styled.div`
+const HeaderNavWrapper = styled.div<{ isOpen: boolean }>`
   width: 180px;
   display: flex;
   justify-content: space-between;
+  transition: all ease-in 0.3s;
 
   @media (max-width: 768px) {
     position: absolute;
     top: 49px;
-    right: -100%;
+    right: ${({ isOpen }) => (isOpen ? '0%' : '-100%')};
     width: 100%;
     padding: 0 calc((100% - 300px) / 2);
     background: #ffffff;
@@ -57,11 +63,14 @@ const MobileMenuButton = styled.button`
   }
 `
 
-const Header: FunctionComponent = function () {
+const Header: FunctionComponent<HeaderProps> = function ({
+  toggleMenu,
+  isOpen,
+}) {
   return (
     <HeaderWrapper>
       <HeaderLink to="/">JHJ Blog</HeaderLink>
-      <HeaderNavWrapper>
+      <HeaderNavWrapper isOpen={isOpen}>
         <HeaderLink to="/">About</HeaderLink>
         <HeaderLink
           to="https://github.com/HyungjunJeon/HyungjunJeon-gitbub.io"
@@ -73,7 +82,7 @@ const Header: FunctionComponent = function () {
           </ExternalLinkIcon>
         </HeaderLink>
       </HeaderNavWrapper>
-      <MobileMenuButton>
+      <MobileMenuButton onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />
       </MobileMenuButton>
     </HeaderWrapper>
