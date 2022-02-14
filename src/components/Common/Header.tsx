@@ -71,7 +71,7 @@ const Header: FunctionComponent<HeaderProps> = function ({
     <HeaderWrapper>
       <HeaderLink to="/">JHJ Blog</HeaderLink>
       <HeaderNavWrapper isOpen={isOpen}>
-        <HeaderLink to="/">About</HeaderLink>
+        <HeaderLink to="/about">About</HeaderLink>
         <HeaderLink
           to="https://github.com/HyungjunJeon/HyungjunJeon-gitbub.io"
           target="_blank"
