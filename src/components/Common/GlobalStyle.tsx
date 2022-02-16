@@ -25,8 +25,26 @@ const defaultStyle = css`
   }
 `
 
+const darkTheme = css`
+  body {
+    &.dark {
+      background-color: #282c35;
+      ​ h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      a,
+      p,
+      span {
+        color: #ffffff;
+      }
+    }
+  }
+`
+
 const GlobalStyle: FunctionComponent = function () {
-  return <Global styles={defaultStyle} />
+  return <Global styles={[defaultStyle, darkTheme]} />
 }
 
 export default GlobalStyle
