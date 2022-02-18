@@ -6,6 +6,7 @@ import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
+import TableOfContents from 'components/Post/TableOfContents'
 
 type PostTemplateProps = {
   data: {
@@ -26,7 +27,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   },
 }) {
   const {
-    node: { html, frontmatter },
+    node: { html, tableOfContents, frontmatter },
   } = edges[0]
 
   const [isOpen, setMenu] = useState<boolean>(false)
@@ -41,6 +42,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         <PostContent html={html} />
         <CommentWidget />
       </PostPageWrapper>
+      <TableOfContents tableOfContents={tableOfContents} />
     </Template>
   )
 }
@@ -53,6 +55,7 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
+          tableOfContents
           frontmatter {
             title
             summary
