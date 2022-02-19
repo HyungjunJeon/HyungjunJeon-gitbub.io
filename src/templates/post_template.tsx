@@ -42,7 +42,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         <PostContent html={html} />
         <CommentWidget />
       </PostPageWrapper>
-      <TableOfContents tableOfContents={tableOfContents} />
+      <TableOfContents tableOfContents={tableOfContents} isOpen={isOpen} />
     </Template>
   )
 }
