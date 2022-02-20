@@ -14,7 +14,7 @@ type TemplateProps = {
   isOpen: boolean
 }
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -48,6 +48,8 @@ const Template: FunctionComponent<TemplateProps> = function ({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:site" content="Hyungjun" />
         <meta name="twitter:creator" content="Hyungjun" />
+
+        <html lang="ko" />
       </Helmet>
       <GlobalStyle />
       <Header toggleMenu={toggleMenu} isOpen={isOpen} />
