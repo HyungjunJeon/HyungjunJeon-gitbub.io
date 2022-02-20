@@ -14,6 +14,9 @@ type PostTemplateProps = {
       edges: PostPageItemType[]
     }
   }
+  location: {
+    href: string
+  }
 }
 
 const PostPageWrapper = styled.div`
@@ -25,9 +28,14 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
+  location: { href },
 }) {
   const {
-    node: { html, tableOfContents, frontmatter },
+    node: {
+      html,
+      tableOfContents,
+      frontmatter: { title, summary, date, categories },
+    },
   } = edges[0]
 
   const [isOpen, setMenu] = useState<boolean>(false)
@@ -36,9 +44,15 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   }
 
   return (
-    <Template toggleMenu={toggleMenu} isOpen={isOpen}>
+    <Template
+      title={title}
+      description={summary}
+      url={href}
+      toggleMenu={toggleMenu}
+      isOpen={isOpen}
+    >
       <PostPageWrapper>
-        <PostHead {...frontmatter} />
+        <PostHead title={title} date={date} categories={categories} />
         <PostContent html={html} />
         <CommentWidget />
       </PostPageWrapper>

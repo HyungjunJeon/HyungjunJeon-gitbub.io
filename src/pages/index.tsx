@@ -12,6 +12,13 @@ type IndexPageProps = {
     search: string
   }
   data: {
+    site: {
+      siteMetadata: {
+        title: string
+        description: string
+        siteUrl: string
+      }
+    }
     allMarkdownRemark: {
       edges: PostListItemType[]
     }
@@ -27,6 +34,9 @@ const IndexPageWrapper = styled.div`
 const IndexPage: FunctionComponent<IndexPageProps> = function ({
   location: { search },
   data: {
+    site: {
+      siteMetadata: { title, description, siteUrl },
+    },
     allMarkdownRemark: { edges },
   },
 }) {
@@ -67,7 +77,13 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   }
 
   return (
-    <Template toggleMenu={toggleMenu} isOpen={isOpen}>
+    <Template
+      title={title}
+      description={description}
+      url={siteUrl}
+      toggleMenu={toggleMenu}
+      isOpen={isOpen}
+    >
       <IndexPageWrapper>
         <PostList selectedCategory={selectedCategory} posts={edges} />
         <CategoryList
@@ -84,6 +100,13 @@ export default IndexPage
 
 export const getPostList = graphql`
   query getPostList {
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+      }
+    }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
     ) {
