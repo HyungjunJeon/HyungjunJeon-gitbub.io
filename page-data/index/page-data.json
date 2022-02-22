@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-index-tsx",
     "path": "/",
-    "result": {"data":{"site":{"siteMetadata":{"title":"주니어 개발자 전형준의 개발블로그입니다","description":"주니어 개발자로서의 성장과정을 기록하기 위해 만든 블로그입니다.","siteUrl":"https://HyungjunJeon.github.io"}},"allMarkdownRemark":{"edges":[{"node":{"id":"a8261d5f-0b1c-5a07-84b1-269f8036fa98","fields":{"slug":"/blog-development/"},"frontmatter":{"title":"Gatsby 블로그 개발 소감","summary":"Gatsby로 블로그를 개발하면서 느낀점","date":"2022. 02. 22.","categories":["블로그 개발"]}}}]}},"pageContext":{}},
+    "result": {"data":{"site":{"siteMetadata":{"title":"주니어 개발자 전형준의 개발블로그입니다","description":"주니어 개발자로서의 성장과정을 기록하기 위해 만든 블로그입니다.","siteUrl":"https://hyungjunjeon.github.io/HyungjunJeon-gitbub.io"}},"allMarkdownRemark":{"edges":[{"node":{"id":"a8261d5f-0b1c-5a07-84b1-269f8036fa98","fields":{"slug":"/blog-development/"},"frontmatter":{"title":"Gatsby 블로그 개발 소감","summary":"Gatsby로 블로그를 개발하면서 느낀점","date":"2022. 02. 22.","categories":["블로그 개발"]}}}]}},"pageContext":{}},
     "staticQueryHashes": []}
