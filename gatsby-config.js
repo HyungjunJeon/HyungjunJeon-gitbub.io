@@ -3,7 +3,7 @@ module.exports = {
     title: `주니어 개발자 전형준의 개발블로그입니다`,
     description: `주니어 개발자로서의 성장과정을 기록하기 위해 만든 블로그입니다.`,
     author: `Hyungjun`,
-    siteUrl: 'https://hyungjunjeon.github.io/HyungjunJeon-gitbub.io/',
+    siteUrl: 'https://hyungjunjeon.github.io/',
   },
   plugins: [
     {
@@ -84,7 +84,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://hyungjunjeon.github.io/HyungjunJeon-gitbub.io/',
+        siteUrl: 'https://hyungjunjeon.github.io/',
         stripQueryString: true,
       },
     },
