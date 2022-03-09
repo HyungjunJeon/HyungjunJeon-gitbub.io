@@ -48,3 +48,41 @@ soup.select('태그명[속성="값"]')
 # 한 개만 가져오고 싶은 경우
 soup.select_one('위와 동일')
 ```
+
+# JavaScript를 이용한 크롤링
+
+JavaScript를 이용해 크롤링 할 때는 'Cheerio'라는 라이브러리를 사용한다. 그리고 AJAX 리퀘스트를 위해서 'axios'라는 라이브러리도 사용한다. 따라서 두 라이브러리를 먼저 설치할 필요가 있으며 크롤링 기본 코드 세팅은 아래와 같다.
+
+```javascript
+const axios = require('axios')
+const cheerio = require('cheerio')
+
+// axios를 활용해 AJAX로 HTML 문서를 가져오는 함수 구현
+async function getHTML() {
+  try {
+    return await axios.get('크롤링할 데이터가 있는 url')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// getHTML 함수 실행 후 데이터에서
+// body > main > div > section > ul > li > article > h2 > a
+// 에 속하는 제목을 titleList에 저장
+getHTML()
+  .then(html => {
+    let titleList = []
+    const $ = cheerio.load(html.data)
+    // ul.list--posts를 찾고 그 children 노드를 bodyList에 저장
+    const bodyList = $('ul.list--posts').children('li.item--post')
+
+    // bodyList를 순회하며 titleList에 h2 > a의 내용을 저장
+    bodyList.each(function (i, elem) {
+      titleList[i] = {
+        title: $(this).find('h2 a').text(),
+      }
+    })
+    return titleList
+  })
+  .then(res => console.log(res)) // 저장된 결과를 출력
+```
