@@ -48,8 +48,8 @@ export default async function getPage() {
 요소를 선택할 때는 아래와 같은 방식으로 사용한다
 
 ```javascript
-const $list = $("#notice_border tbody tr td:nth-of-type(2) a").toArray();
-		const $maxPageNum = $("#list_number span:nth-of-type(2)")
+const $list = $("선택할 요소").toArray();
+		const $maxPageNum = $("선택할 요소")
 			.text()
 			.split("/")[1];
 		$list.map((el, idx) => {

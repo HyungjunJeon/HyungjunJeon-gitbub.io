@@ -74,7 +74,7 @@ getHTML()
     let titleList = []
     const $ = cheerio.load(html.data)
     // ul.list--posts를 찾고 그 children 노드를 bodyList에 저장
-    const bodyList = $('ul.list--posts').children('li.item--post')
+    const bodyList = $('선택할 요소').children('선택할 요소')
 
     // bodyList를 순회하며 titleList에 h2 > a의 내용을 저장
     bodyList.each(function (i, elem) {
